@@ -1,15 +1,24 @@
 <form action="/" method="POST">
-  <h1 class="title text-center">URL Shortener</h1>
+  <h1 class="title text-center my-5">URL Shortener</h1>
 
   <div class="container d-flex justify-content-center">
     <div class="form-row col-lg-10 d-flex justify-content-center">
       <div class="form-field col-lg-8">
-        <input type="text" id="input" name="url" placeholder="Enter URL here">
+        <input type="text" id="input" name="url" placeholder="Enter URL here" style="width: 100%;" required>
       </div>
-      <div class="form-field col-lg-6 d-flex justify-content-center">
-        <button class="submit-btn" type="submit">shorten</button>
+      <div class="form-field col-lg-6 d-flex justify-content-center my-5">
+        <button class="submit-btn btn btn-outline-primary" type="submit">shorten</button>
       </div>
+      <ul class="row col-lg-12 list-group list-group-horizontal">
+      {{#each inputUrlList}}
+        <li class="col-lg-2 list-group-item list-group-item-info">Input URL:</li>
+        <li class="col-lg-4 list-group-item">{{this.inputUrl}}</li>
+        <li class="col-lg-2 list-group-item list-group-item-info">Shortened URL:</li>
+        <li class="col-lg-4 list-group-item"><a href="/{{this.urlCode}}">https://localhost:3000/{{this.urlCode}}</a></li>
+      {{/each}}
+      </ul>
     </div>
   </div>
+
 
 </form>

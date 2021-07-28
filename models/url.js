@@ -4,9 +4,9 @@ const urlSchema = new Schema({
   urlCode: {
     type: String
   },
-  url: {
+  inputUrl: {
     type: String
   }
 })
 
-module.exports = mongoose.model('Url', urlSchema)
+module.exports = mongoose.model('UrlList', urlSchema)
