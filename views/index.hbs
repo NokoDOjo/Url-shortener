@@ -16,7 +16,7 @@
         <li class="col-lg-1 list-group-item list-group-item-info">Input URL:</li>
         <li class="col-lg-4 list-group-item">{{this.inputUrl}}</li>
         <li class="col-lg-2 list-group-item list-group-item-info">Shortened URL:</li>
-        <li class="col-lg-4 list-group-item"><a class="shortenURL" href="/{{this.urlCode}}">https://{{urlBody}}/{{this.urlCode}}</a></li>
+        <li class="col-lg-4 list-group-item"><a class="shortenURL" href="/{{this.urlCode}}">{{this.shortenUrl}}</a></li>
         <li class="col-lg-1 list-group-item d-flex justify-content-center align-items-center"><button class="btn btn-outline-primary copy-btn" onclick="clickToCopy()">Copy</button></li>
       {{/each}}
       </ul>

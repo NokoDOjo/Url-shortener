@@ -5,17 +5,19 @@ const { randomUrlCode } = require('../../tools/utility')
 
 
 router.get('/', (req, res) => {
-  const urlBody = req.headers.host
   UrlList.find()
     .lean()
     .then(Url => {
-      res.render('index', { Url, urlBody })
+      res.render('index', { Url })
     })
     .catch(error => console.log(error))
 })
 
 router.post('/', (req, res) => {
   const inputUrl = req.body.url
+  const urlBody = req.headers.host
+  const protocol = req.protocol
+  let shortenUrl = ""
   let urlCode = randomUrlCode()
 
   UrlList.find()
@@ -26,7 +28,10 @@ router.post('/', (req, res) => {
       while (Url.some(url => url.urlCode === urlCode)) {
         urlCode = randomUrlCode()
       }
-      return UrlList.create({ urlCode, inputUrl })
+      
+      shortenUrl = protocol + '://' + urlBody + '/' + urlCode
+      console.log(shortenUrl)
+      return UrlList.create({ urlCode, inputUrl, shortenUrl })
       .then(() => res.redirect('/'))
       .catch(error => console.log(error))
     })

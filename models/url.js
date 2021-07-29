@@ -6,6 +6,9 @@ const urlSchema = new Schema({
   },
   inputUrl: {
     type: String
+  },
+  shortenUrl: {
+    type: String
   }
 })
 
