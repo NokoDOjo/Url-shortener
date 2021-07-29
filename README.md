@@ -30,15 +30,11 @@ cd Url-shortener
 ```
 npm install
 ```
-4. 新增種子資料
-```
-npm run seed
-```
-5. 啟動專案
+4. 啟動專案
 ```
 npm run dev
 ```
-6. 出現以下訊息後，即可在 http://localhost:3000 開始使用
+5. 出現以下訊息後，即可在 http://localhost:3000 開始使用
 ```
 Express is listening on localhost:3000
 ```
