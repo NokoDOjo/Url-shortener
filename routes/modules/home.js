@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     .lean()
     .then(Url => {
       const inputUrlList = Url.filter(url => url.inputUrl.length !== 0)  
-      res.render('index', { inputUrlList })
+      res.render('index', { inputUrlList, urlBody })
     })
     .catch(error => console.log(error))
 })

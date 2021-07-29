@@ -4,23 +4,39 @@
     <img class="w-100 mt-3" src="https://img.icons8.com/color/452/shorten-urls.png" alt="">
   </div>
   <div class="container d-flex justify-content-center my-3">
-    <div class="form-row col-lg-10 d-flex justify-content-center">
+    <div class="form-row col-lg-11 d-flex justify-content-center">
       <div class="form-field col-lg-8">
-        <input type="text" id="input" name="url" placeholder="Enter URL here" style="width: 100%;" required>
+        <input type="url" id="input" name="url" placeholder="Enter URL here" style="width: 100%;" required>
       </div>
       <div class="form-field col-lg-6 d-flex justify-content-center my-5">
         <button class="submit-btn btn btn-outline-primary" type="submit">shorten</button>
       </div>
       <ul class="row col-lg-12 list-group list-group-horizontal">
       {{#each inputUrlList}}
-        <li class="col-lg-2 list-group-item list-group-item-info">Input URL:</li>
+        <li class="col-lg-1 list-group-item list-group-item-info">Input URL:</li>
         <li class="col-lg-4 list-group-item">{{this.inputUrl}}</li>
         <li class="col-lg-2 list-group-item list-group-item-info">Shortened URL:</li>
-        <li class="col-lg-4 list-group-item"><a href="/{{this.urlCode}}">https://fast-plains-79653.herokuapp.com/{{this.urlCode}}</a></li>
+        <li class="col-lg-4 list-group-item"><a class="shortenURL" href="/{{this.urlCode}}">https://fast-plains-79653.herokuapp.com/{{this.urlCode}}</a></li>
+        <li class="col-lg-1 list-group-item d-flex justify-content-center align-items-center"><button class="btn btn-outline-primary copy-btn" onclick="clickToCopy()">Copy</button></li>
       {{/each}}
       </ul>
     </div>
   </div>
-
-
 </form>
+
+
+<script>
+  function clickToCopy() {
+    const range = document.createRange()
+    const shortenUrl = event.target.parentElement.previousElementSibling.firstChild
+    range.selectNode(shortenUrl)
+    const selection = window.getSelection()
+  // 先清空當前選取範圍
+    selection.removeAllRanges()
+  // 加入 Range 
+    selection.addRange(range)
+  
+    document.execCommand('copy')
+    alert(`Copied ${shortenUrl.textContent}`)
+  }
+</script>
